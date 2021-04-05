@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import defaultBcg from '../images/room-1.jpeg';
-import Hero from '../components/Hero';
 import Banner from '../components/Banner';
 import { Link } from 'react-router-dom';
 import { RoomContext } from '../context';
@@ -15,7 +14,7 @@ export default class Room extends Component {
   static contextType = RoomContext;
 
   render() {
-    const { getRoom, loading } = this.context;
+    const { getRoom } = this.context;
     const room = getRoom(this.state.slug);
     if (!room) {
       return (
@@ -64,7 +63,9 @@ export default class Room extends Component {
               <h3>info</h3>
               <h6>Price: £{price}</h6>
               <h6>Size: {size} SQ FT</h6>
-              <h6>Beds: {capacity}</h6>
+              <h6>Guests: {capacity}</h6>
+              <h6>{breakfast ? 'breakfast included' : ''}</h6>
+
               <h6>{pets ? 'pets allowed' : 'no pets allowed'}</h6>
             </article>
           </div>
